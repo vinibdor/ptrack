@@ -4,6 +4,9 @@
 "http://java.sun.com/dtd/web-facesconfig_1_0.dtd">
 
 <faces-config>
+	<application>
+		<message-bundle>ptrack-Resources</message-bundle>
+	</application>
 	<navigation-rule>
 		<from-view-id>/login.jsp</from-view-id>
 		<navigation-case>
@@ -13,6 +16,51 @@
 		<navigation-case>
 			<from-outcome>failure</from-outcome>
 			<to-view-id>/login.jsp</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+		<description>Navigation for the toolbar.</description>
+		<from-view-id>/*</from-view-id>
+		<navigation-case>
+			<from-outcome>inbox</from-outcome>
+			<to-view-id>/inbox.jsp</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>show_all</from-outcome>
+			<to-view-id>/show_all.jsp</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>create</from-outcome>
+			<to-view-id>/create.jsp</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>logout</from-outcome>
+			<to-view-id>/login.jsp</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+		<from-view-id>/inbox.jsp</from-view-id>
+		<navigation-case>
+			<from-outcome>details</from-outcome>
+			<to-view-id>/details.jsp</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>approve</from-outcome>
+			<to-view-id>/approve.jsp</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>reject</from-outcome>
+			<to-view-id>/reject.jsp</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+		<from-view-id>/show_all.jsp</from-view-id>
+		<navigation-case>
+			<from-outcome>details</from-outcome>
+			<to-view-id>/details.jsp</to-view-id>
 		</navigation-case>
 	</navigation-rule>
 </faces-config>

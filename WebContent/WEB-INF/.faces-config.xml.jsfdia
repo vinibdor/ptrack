@@ -10,5 +10,42 @@
   </PROCESS-ITEM>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:#inbox.jsp" PATH="/inbox.jsp"
-  SHAPE="256,33,0,0" model-entity="JSFProcessGroup"/>
+  SHAPE="256,33,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#inbox.jsp:0" NAME="item" PATH="/inbox.jsp" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="details::#details.jsp" NAME="output"
+    PATH="/details.jsp" TARGET="rules:#details.jsp" TITLE="details" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="approve::#approve.jsp" NAME="output1"
+    PATH="/approve.jsp" TARGET="rules:#approve.jsp" TITLE="approve" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="reject::#reject.jsp" NAME="output2"
+    PATH="/reject.jsp" TARGET="rules:#reject.jsp" TITLE="reject" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#*" PATH="/*" SHAPE="48,161,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#*:0" NAME="item" PATH="/*" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="inbox::#inbox.jsp" NAME="output"
+    PATH="/inbox.jsp" TARGET="rules:#inbox.jsp" TITLE="inbox" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="show_all::#show_all.jsp" NAME="output1"
+    PATH="/show_all.jsp" TARGET="rules:#show_all.jsp" TITLE="show_all" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="create::#create.jsp" NAME="output2"
+    PATH="/create.jsp" TARGET="rules:#create.jsp" TITLE="create" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="logout::#login.jsp" NAME="output3"
+    PATH="/login.jsp" TARGET="rules:#login.jsp" TITLE="logout" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#create.jsp" PATH="/create.jsp"
+  SHAPE="304,385,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#show_all.jsp" PATH="/show_all.jsp"
+  SHAPE="304,177,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#show_all.jsp:0" NAME="item"
+   PATH="/show_all.jsp" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="details::#details.jsp" NAME="output"
+    PATH="/details.jsp" TARGET="rules:#details.jsp" TITLE="details" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#reject.jsp" PATH="/reject.jsp"
+  SHAPE="544,401,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#details.jsp" PATH="/details.jsp"
+  SHAPE="544,17,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#approve.jsp" PATH="/approve.jsp"
+  SHAPE="544,193,0,0" model-entity="JSFProcessGroup"/>
 </PROCESS>

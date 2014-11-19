@@ -11,7 +11,7 @@
 			button.src = img;
 		}
 	</script>
-	<link rel="stylesheet" type="text/css" href="stylesheet.css" />
+	<link rel="stylesheet" type="text/css" href="<%= request.getContextPath() %>/stylesheet.css" />
 </head>
 <body>
 	<h:form>				
@@ -26,11 +26,15 @@
 					<h:outputText value="ProjectTrack" />
 				</f:facet>
 				
+				<h:messages globalOnly="true" styleClass="errors"/>
+				<h:panelGroup/>
+				<h:panelGroup/>
+				
 				<h:outputLabel for="userNameInput">
 					<h:outputText value="Enter your user name:"></h:outputText>
 				</h:outputLabel>
 				
-				<h:inputText id="userNameInput" maxlength="30" size="20" required="true">
+				<h:inputText id="userNameInput" maxlength="30" size="20" required="true" value="#{authenticationBean.login}">
 					<f:validateLength minimum="5" maximum="30"/>
 				</h:inputText>
 				
@@ -40,7 +44,7 @@
 					<h:outputText value="Password:"></h:outputText>
 				</h:outputLabel>
 				
-				<h:inputSecret id="passwordInput" maxlength="20" size="20" required="true">
+				<h:inputSecret id="passwordInput" maxlength="20" size="20" required="true" value="#{authenticationBean.password}">
 					<f:validateLength minimum="5" maximum="15"/>
 				</h:inputSecret>
 					
@@ -48,7 +52,7 @@
 				
 				<h:panelGroup/>
 				
-				<h:commandButton action="success"
+				<h:commandButton action="#{authenticationBean.login}"
 						image="/images/button.jpg" style="width:80px;height:20px;"
 						onmouseover="set_image(this, '#{facesContext.externalContext.requestContextPath}/images/button_over.jpg')"
 						onmouseout="set_image(this, '#{facesContext.externalContext.requestContextPath}/images/button.jpg')"></h:commandButton>

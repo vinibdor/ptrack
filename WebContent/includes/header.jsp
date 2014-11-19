@@ -9,7 +9,7 @@
 				border="0">
 
 				<h:outputText value="ProjectTrack:" styleClass="header-header" />
-				<h:commandLink action="inbox">
+				<h:commandLink action="inbox" style="#{!authenticationBean.inboxAuthorized?'pointer-events: none; color: gray':''}">
 					<h:graphicImage url="images/inbox.gif" styleClass="header-icon"
 						alt="Inbox" />
 					<h:outputText value="Inbox" styleClass="header-command" />
@@ -19,12 +19,12 @@
 						alt="Show all projects" />
 					<h:outputText value="Show all" styleClass="header-command" />
 				</h:commandLink>
-				<h:commandLink action="create">
+				<h:commandLink action="#{createProjectBean.create}"  style="#{!authenticationBean.createNewAuthorized?'pointer-events: none; color: gray':''}">
 					<h:graphicImage url="images/create.gif" styleClass="header-icon"
 						alt="Create a new project" />
 					<h:outputText value="Create new" styleClass="header-command" />
 				</h:commandLink>
-				<h:commandLink action="logout">
+				<h:commandLink action="#{authenticationBean.logout}">
 					<h:graphicImage url="images/logout.gif" styleClass="header-icon"
 						alt="Logout" />
 					<h:outputText value="Logout" styleClass="header-command" />
@@ -35,13 +35,12 @@
 					<h:outputText value="Language:" styleClass="language-select" />
 				</h:outputLabel>
 				<h:selectOneListbox id="languageSelect" size="1"
-					styleClass="language-select">
-					<f:selectItem itemLabel="English" itemValue="English" />
-					<f:selectItem itemLabel="Russian" itemValue="Russian" />
+					styleClass="language-select" value="#{visit.locale}">
+					<f:selectItems value="#{visit.supportedLocaleItems}" />
 				</h:selectOneListbox>
 				<h:commandButton value="Go!" styleClass="language-select-button" />
 			</h:panelGroup>
-			<h:outputText value="proj_mgr" styleClass="user-name" />
+			<h:outputText value="#{visit.user.login}" styleClass="user-name" />
 		</h:panelGrid>
 	</h:form>
 </f:subview>

@@ -8,7 +8,12 @@ import javax.faces.component.html.HtmlDataTable;
 import br.org.vinicius.jsf.ptrack.model.Project;
 import br.org.vinicius.jsf.ptrack.model.Status;
 
-public class InboxBean {
+public class InboxBean extends BaseBean {
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3425998537589689608L;
 	
 	public InboxBean() {
 		
@@ -33,15 +38,19 @@ public class InboxBean {
 	}
 	
 	public String approve() {
-		return "";
+		return "success";
 	}
 	
 	public String reject() {
-		return "";
+		return "success";
 	}
 	
 	public String details() {
-		return "";
+		return "success";
+	}
+	
+	public String cancel() {
+		return "cancel_readwrite";
 	}
 	
 	public void sort() {

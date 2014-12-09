@@ -1,5 +1,6 @@
 package br.org.vinicius.jsf.ptrack.web;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.model.SelectItem;
@@ -18,25 +19,30 @@ public class SelectItemsBean {
 		SelectItem artifactC = new SelectItem();
 		artifactC.setValue("Test Plan");
 		
+		this.artifacts = new ArrayList<SelectItem>();		
+		this.getArtifacts().add(artifactA);
+		this.getArtifacts().add(artifactB);
+		this.getArtifacts().add(artifactC);
+		
 		SelectItem roleA = new SelectItem();
-		roleA.setLabel("Project Manager");
-		
-		RoleType pmRole = new RoleType();
-		pmRole.setType("Project Manager");		
-		roleA.setValue(pmRole);
-		
+		roleA.setValue("Project Manager");
+
 		SelectItem roleB = new SelectItem();
-		roleB.setLabel("System Analyst");
+		roleB.setValue("System Analyst");
 		
-		RoleType saRole = new RoleType();
-		saRole.setType("System Analyst");
-		roleB.setValue(roleB);
+		this.setRoles(new ArrayList<SelectItem>());
+		this.getRoles().add(roleA);
+		this.getRoles().add(roleB);
 		
 		SelectItem pTypeA = new SelectItem();
 		pTypeA.setValue("Internal Web Application");
 		
 		SelectItem pTypeB = new SelectItem();
 		pTypeB.setValue("Internal Desktop Application");
+		
+		this.setProjectTypes(new ArrayList<SelectItem>());
+		this.getProjectTypes().add(pTypeA);
+		this.getProjectTypes().add(pTypeB);
 	}
 	
 	public List<SelectItem> getArtifacts() {

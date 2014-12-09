@@ -1,13 +1,14 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <%@ taglib uri="http://java.sun.com/jsf/core" prefix="f"%>
 <%@ taglib uri="http://java.sun.com/jsf/html" prefix="h"%>
+<%@ taglib uri="jsf-in-action-components" prefix="jia"%>
 
-<f:view>
+<f:view>	
 <html>
 <head>
 	<title><h:outputText value="ProjectTrack - Create a new project" />
 	</title>
-	<link rel="stylesheet" type="text/css" href="stylesheet.css" />
+	<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/stylesheet.css" />
 </head>
 <body class="page-background">
 	<jsp:include page="/includes/header.jsp" />
@@ -21,13 +22,13 @@
 					<f:facet name="header">
 						<h:outputText value="Create a project" />
 					</f:facet>
-					<h:outputText value="Application messages." styleClass="errors" />
+					<h:messages globalOnly="true" showDetail="true" styleClass="errors"/>
 				</h:panelGrid>
 			</f:facet>
 			<h:outputLabel for="nameInput">
 				<h:outputText value="Name:" />
 			</h:outputLabel>
-			<h:inputText id="nameInput" size="40" required="true">
+			<h:inputText id="nameInput" size="40" required="true" value="#{visit.currentProject.name}">
 				<f:validateLength minimum="5" />
 			</h:inputText>
 			<h:message for="nameInput" styleClass="errors" />
@@ -36,36 +37,37 @@
 			</h:outputLabel>
 			<h:selectOneMenu id="typeSelectOne" title="Select the project type"
 				required="true">
-				<f:selectItem itemValue="" itemLabel="" />
-				<f:selectItem itemValue="0" itemLabel="Internal Database" />
-				<f:selectItem itemValue="5" itemLabel="External Database" />
-				<f:selectItem itemValue="10" itemLabel="Internal Web Application" />
-				<f:selectItem itemValue="15" itemLabel="External Web Application" />
-				<f:selectItem itemValue="20"
-					itemLabel="Internal Desktop Application" />
-				<f:selectItem itemValue="25"
-					itemLabel="External Desktop Application" />
+				<f:selectItems value="#{selectItems.projectTypes}" /> 
 			</h:selectOneMenu>
 			<h:message for="typeSelectOne" styleClass="errors" />
 			<h:outputLabel for="initiatedByInput">
 				<h:outputText value="Initiated by:" />
 			</h:outputLabel>
-			<h:inputText id="initiatedByInput" size="40" required="true">
+			<h:inputText id="initiatedByInput" size="40" required="true" value="#{visit.currentProject.initiatedBy}">
 				<f:validateLength minimum="2" />
 			</h:inputText>
 			<h:message for="initiatedByInput" styleClass="errors" />
 			<h:outputLabel for="requirementsInput">
 				<h:outputText value="Requirements contact:" />
 			</h:outputLabel>
-			<h:inputText id="requirementsInput" size="40" />
+			<h:inputText id="requirementsInput" size="40" value="#{visit.currentProject.requirementsContact }" 
+					validator="#{createProjectBean.validateReqContact}" />
+			<h:message for="requirementsInput" styleClass="errors" />
 			<h:panelGroup />
 			<h:outputLabel for="requirementsEmailInput">
 				<h:outputText value="Requirements contact e-mail:" />
 			</h:outputLabel>
-			<h:inputText id="requirementsEmailInput" size="40">				
+			<h:inputText id="requirementsEmailInput" size="40" value="#{visit.currentProject.requirementsContactEmail }"
+					binding="#{createProjectBean.reqContactEmailInput}">
+					
+				<jia:validateRegexp expression="\\w+([-+.]\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*" 
+						errorMessage="Please enter a valid e-mail address."/>
+								
 			</h:inputText>
 			<h:message for="requirementsEmailInput" styleClass="errors" />
+			
 			<%@ include file="/includes/project_artifacts.jsp"%>
+			
 			<h:panelGroup />
 			<f:facet name="footer">
 				<h:panelGroup>
@@ -75,11 +77,11 @@
 						<h:outputLabel for="commentsInput">
 							<h:outputText value="Your comments:" />
 						</h:outputLabel>
-						<h:inputTextarea id="commentsInput" rows="10" cols="80" />
+						<h:inputTextarea id="commentsInput" rows="10" cols="80" value="#{visit.currentProject.initialComments}"/>
 					</h:panelGrid>
 					<h:panelGrid columns="2" rowClasses="table-odd-row">
-						<h:commandButton value="Save" action="save" />
-						<h:commandButton value="Cancel" action="cancel" immediate="true" />
+						<h:commandButton value="Save" action="#{createProjectBean.add}" />
+						<h:commandButton value="Cancel" action="#{createProjectBean.cancel}" immediate="true" />
 					</h:panelGrid>
 					<h:panelGroup />
 				</h:panelGroup>

@@ -60,7 +60,7 @@ body a:hover {
 .project-data {
   font-size: 10pt;
   color: rgb(42, 47, 255);
-  margin-left: 10px;
+  text-align: left;
 }
 
 .project-input {
@@ -127,11 +127,20 @@ body a:hover {
   border-collapse: collapse;
   font-family: Arial, sans-serif;
   text-align: left;
-/*  margin-bottom: 10px;*/
 }
 
 .toolbar-header {
   font-size: 14pt;
+}
+
+.header-icon {
+	width: 20px;
+	height: 20px;
+	vertical-align: middle;
+}
+
+.header-command {
+	vertical-align: middle;
 }
 
 .toolbar-command {

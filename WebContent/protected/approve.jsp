@@ -7,7 +7,7 @@
 <head>
 <title><h:outputText value="ProjectTrack - Approve a Project" />
 </title>
-<link rel="stylesheet" type="text/css" href="stylesheet.css" />
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/stylesheet.css" />
 </head>
 <body class="page-background">
 	<jsp:include page="/includes/header.jsp" />
@@ -35,6 +35,7 @@
 			
 			<f:facet name="footer">
 				<h:panelGroup>
+					<%@ include file="/includes/project_comments.jsp"%>
 					<h:panelGrid columns="2" rowClasses="table-odd-row">
 						<h:commandButton value="Approve" action="#{updateProjectBean.approve}" />
 						<h:commandButton value="Cancel" action="#{updateProjectBean.cancel}" immediate="true" />

@@ -1,7 +1,6 @@
 package br.org.vinicius.jsf.ptrack.model;
 
 import java.util.Date;
-
 public class HistoryItem {
 
 	public HistoryItem() {
@@ -32,10 +31,17 @@ public class HistoryItem {
 	public void setUser(User user) {
 		this.user = user;
 	}
+	public String getComments() {
+		return comments;
+	}
+	public void setComments(String comments) {
+		this.comments = comments;
+	}
 
 	private Date changeDate;
 	private String fromStatus;
 	private String toStatus;
 	private User user;
+	private String comments;
 	
 }

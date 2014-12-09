@@ -7,7 +7,7 @@
 	</h:outputLabel>
 	<h:selectManyCheckbox id="artifactSelect" layout="pageDirection"
 			styleClass="project-input"
-			value="#{visit.currentProject.completedArtifacts }"
+			value="#{visit.currentProject.completedArtifacts}"
 			converter="ArtifactType">
 			
 		<f:selectItems value="#{selectItems.artifacts}" />

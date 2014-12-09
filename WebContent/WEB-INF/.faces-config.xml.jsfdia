@@ -26,21 +26,28 @@
     TARGET="rules:#protected#edit#create.jsp" TITLE="create" model-entity="JSFProcessItemOutput"/>
    <PROCESS-ITEM-OUTPUT ID="logout::#login.jsp" NAME="output3"
     PATH="/login.jsp" TARGET="rules:#login.jsp" TITLE="logout" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="error::#error.jsp" NAME="output4"
+    PATH="/error.jsp" TARGET="rules:#error.jsp" TITLE="error" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:#protected#inbox.jsp"
   PATH="/protected/inbox.jsp" SHAPE="304,673,0,0" model-entity="JSFProcessGroup">
   <PROCESS-ITEM ID="rules:#protected#inbox.jsp:0" NAME="item"
    PATH="/protected/inbox.jsp" model-entity="JSFProcessItem">
-   <PROCESS-ITEM-OUTPUT ID="details::#general#details.jsp" NAME="output"
+   <PROCESS-ITEM-OUTPUT
+    ID="success:#{inboxBean.details}:#general#details.jsp" NAME="output"
     PATH="/general/details.jsp" TARGET="rules:#general#details.jsp"
-    TITLE="details" model-entity="JSFProcessItemOutput"/>
-   <PROCESS-ITEM-OUTPUT ID="approve::#protected#approve.jsp"
+    TITLE="#{inboxBean.details}:success" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="success:#{inboxBean.approve}:#protected#approve.jsp"
     NAME="output1" PATH="/protected/approve.jsp"
-    TARGET="rules:#protected#approve.jsp" TITLE="approve" model-entity="JSFProcessItemOutput"/>
-   <PROCESS-ITEM-OUTPUT ID="reject::#protected#reject.jsp"
+    TARGET="rules:#protected#approve.jsp"
+    TITLE="#{inboxBean.approve}:success" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="success:#{inboxBean.reject}:#protected#reject.jsp"
     NAME="output2" PATH="/protected/reject.jsp"
-    TARGET="rules:#protected#reject.jsp" TITLE="reject" model-entity="JSFProcessItemOutput"/>
+    TARGET="rules:#protected#reject.jsp"
+    TITLE="#{inboxBean.reject}:success" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:#general#show_all.jsp"
@@ -65,29 +72,59 @@
   </PROCESS-ITEM>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:#general#details.jsp"
-  PATH="/general/details.jsp" SHAPE="560,881,0,0" model-entity="JSFProcessGroup"/>
+  PATH="/general/details.jsp" SHAPE="560,881,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#general#details.jsp:0" NAME="item"
+   PATH="/general/details.jsp" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="cancel_readonly::#general#show_all.jsp"
+    NAME="output" PATH="/general/show_all.jsp"
+    TARGET="rules:#general#show_all.jsp" TITLE="cancel_readonly" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="cancel_readwrite::#protected#inbox.jsp"
+    NAME="output1" PATH="/protected/inbox.jsp"
+    TARGET="rules:#protected#inbox.jsp" TITLE="cancel_readwrite" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:#protected#approve.jsp"
   PATH="/protected/approve.jsp" SHAPE="560,881,0,0" model-entity="JSFProcessGroup">
   <PROCESS-ITEM ID="rules:#protected#approve.jsp:0" NAME="item"
    PATH="/protected/approve.jsp" model-entity="JSFProcessItem">
-   <PROCESS-ITEM-OUTPUT ID="approve::#protected#inbox.jsp" NAME="output"
-    PATH="/protected/inbox.jsp" TARGET="rules:#protected#inbox.jsp"
-    TITLE="approve" model-entity="JSFProcessItemOutput"/>
-   <PROCESS-ITEM-OUTPUT ID="cancel::#protected#inbox.jsp" NAME="output1"
-    PATH="/protected/inbox.jsp" TARGET="rules:#protected#inbox.jsp"
-    TITLE="cancel" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="success_readonly::#general#show_all.jsp"
+    NAME="output" PATH="/general/show_all.jsp"
+    TARGET="rules:#general#show_all.jsp" TITLE="success_readonly" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="success_readwrite::#protected#inbox.jsp"
+    NAME="output1" PATH="/protected/inbox.jsp"
+    TARGET="rules:#protected#inbox.jsp" TITLE="success_readwrite" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="failure::#protected#approve.jsp"
+    NAME="output2" PATH="/protected/approve.jsp"
+    TARGET="rules:#protected#approve.jsp" TITLE="failure" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="cancel_readonly::#general#show_all.jsp"
+    NAME="output3" PATH="/general/show_all.jsp"
+    TARGET="rules:#general#show_all.jsp" TITLE="cancel_readonly" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="cancel_readwrite::#protected#inbox.jsp"
+    NAME="output4" PATH="/protected/inbox.jsp"
+    TARGET="rules:#protected#inbox.jsp" TITLE="cancel_readwrite" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:#protected#reject.jsp"
   PATH="/protected/reject.jsp" SHAPE="544,881,0,0" model-entity="JSFProcessGroup">
   <PROCESS-ITEM ID="rules:#protected#reject.jsp:0" NAME="item"
    PATH="/protected/reject.jsp" model-entity="JSFProcessItem">
-   <PROCESS-ITEM-OUTPUT ID="reject::#protected#inbox.jsp" NAME="output"
-    PATH="/protected/inbox.jsp" TARGET="rules:#protected#inbox.jsp"
-    TITLE="reject" model-entity="JSFProcessItemOutput"/>
-   <PROCESS-ITEM-OUTPUT ID="cancel::#protected#inbox.jsp" NAME="output1"
-    PATH="/protected/inbox.jsp" TARGET="rules:#protected#inbox.jsp"
-    TITLE="cancel" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="success_readonly::#general#show_all.jsp"
+    NAME="output" PATH="/general/show_all.jsp"
+    TARGET="rules:#general#show_all.jsp" TITLE="success_readonly" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="success_readwrite::#protected#inbox.jsp"
+    NAME="output1" PATH="/protected/inbox.jsp"
+    TARGET="rules:#protected#inbox.jsp" TITLE="success_readwrite" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="failure::#protected#approve.jsp"
+    NAME="output2" PATH="/protected/approve.jsp"
+    TARGET="rules:#protected#approve.jsp" TITLE="failure" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="cancel_readonly::#general#show_all.jsp"
+    NAME="output3" PATH="/general/show_all.jsp"
+    TARGET="rules:#general#show_all.jsp" TITLE="cancel_readonly" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="cancel_readwrite::#protected#inbox.jsp"
+    NAME="output4" PATH="/protected/inbox.jsp"
+    TARGET="rules:#protected#inbox.jsp" TITLE="cancel_readwrite" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#error.jsp" PATH="/error.jsp"
+  SHAPE="320,209,0,0" model-entity="JSFProcessGroup"/>
 </PROCESS>

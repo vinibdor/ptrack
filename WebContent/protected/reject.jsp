@@ -6,7 +6,7 @@
 <head>
 	<title><h:outputText value="ProjectTrack - Reject a Project" />
 	</title>
-	<link rel="stylesheet" type="text/css" href="stylesheet.css" />
+	<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>stylesheet.css" />
 </head>
 <body class="page-background">
 	<jsp:include page="/includes/header.jsp" />
@@ -29,8 +29,8 @@
 				<h:panelGroup>
 					<%@ include file="/includes/project_comments.jsp"%>
 					<h:panelGrid columns="2" rowClasses="table-odd-row">
-						<h:commandButton value="Reject" action="reject" />
-						<h:commandButton value="Cancel" action="cancel" immediate="true" />
+						<h:commandButton value="Reject" action="#{inboxBean.reject }" />
+						<h:commandButton value="Cancel" action="#{inboxBean.cancel }" immediate="true" />
 					</h:panelGrid>
 				</h:panelGroup>
 			</f:facet>

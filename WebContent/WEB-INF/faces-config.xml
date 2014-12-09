@@ -5,8 +5,15 @@
 
 <faces-config>
 	<application>
+		<locale-config>
+			<default-locale>en</default-locale>
+			<supported-locale>en</supported-locale>
+			<supported-locale>ru</supported-locale>
+		</locale-config>
 		<message-bundle>ptrack-Resources</message-bundle>
 	</application>
+
+	<!-- beans -->
 
 	<managed-bean>
 		<description>Used for logging and logging out.
@@ -20,25 +27,54 @@
 		<description>Used for populate inbox.
 		</description>
 		<managed-bean-name>inboxBean</managed-bean-name>
-		<managed-bean-class>br.org.vinicius.jsf.ptrack.web.InboxBean</managed-bean-class>
+		<managed-bean-class>br.org.vinicius.jsf.ptrack.web.SelectProjectBean</managed-bean-class>
 		<managed-bean-scope>request</managed-bean-scope>
+		<managed-property>
+			<property-name>visit</property-name>
+			<value>#{sessionScope.visit}</value>
+		</managed-property>
+		<managed-property>
+			<property-name>projectCoordinator</property-name>
+			<value>#{applicationScope.projectCoordinator}</value>
+		</managed-property>
+		<managed-property>
+			<property-name>statusCoordinator</property-name>
+			<value>#{applicationScope.statusCoordinator}</value>
+		</managed-property>
+		<managed-property>
+			<property-name>userCoordinator</property-name>
+			<value>#{applicationScope.userCoordinator}</value>
+		</managed-property>
 	</managed-bean>
 
 	<managed-bean>
 		<description>Used for populate show all projects page.
 		</description>
 		<managed-bean-name>showAllBean</managed-bean-name>
-		<managed-bean-class>br.org.vinicius.jsf.ptrack.web.InboxBean</managed-bean-class>
+		<managed-bean-class>br.org.vinicius.jsf.ptrack.web.SelectProjectBean</managed-bean-class>
 		<managed-bean-scope>request</managed-bean-scope>
+		<managed-property>
+			<property-name>visit</property-name>
+			<value>#{sessionScope.visit}</value>
+		</managed-property>
+		<managed-property>
+			<property-name>projectCoordinator</property-name>
+			<value>#{applicationScope.projectCoordinator}</value>
+		</managed-property>
+		<managed-property>
+			<property-name>statusCoordinator</property-name>
+			<value>#{applicationScope.statusCoordinator}</value>
+		</managed-property>
+		<managed-property>
+			<property-name>userCoordinator</property-name>
+			<value>#{applicationScope.userCoordinator}</value>
+		</managed-property>		
+		
 	</managed-bean>
 
-	<managed-bean>
-		<description>Used by many pages to populate combos, lists etc.
-		</description>
-		<managed-bean-name>selectItems</managed-bean-name>
-		<managed-bean-class>br.org.vinicius.jsf.ptrack.web.SelectItemsBean</managed-bean-class>
-		<managed-bean-scope>application</managed-bean-scope>
-	</managed-bean>
+	<!-- managed-bean> <description>Used by many pages to populate combos, lists 
+		etc. </description> <managed-bean-name>selectItems</managed-bean-name> <managed-bean-class>br.org.vinicius.jsf.ptrack.web.SelectItemsBean</managed-bean-class> 
+		<managed-bean-scope>application</managed-bean-scope> </managed-bean -->
 
 	<managed-bean>
 		<description>Used to update project status
@@ -46,6 +82,22 @@
 		<managed-bean-name>updateProjectBean</managed-bean-name>
 		<managed-bean-class>br.org.vinicius.jsf.ptrack.web.UpdateProjectBean</managed-bean-class>
 		<managed-bean-scope>application</managed-bean-scope>
+				<managed-property>
+			<property-name>visit</property-name>
+			<value>#{sessionScope.visit}</value>
+		</managed-property>
+		<managed-property>
+			<property-name>projectCoordinator</property-name>
+			<value>#{applicationScope.projectCoordinator}</value>
+		</managed-property>
+		<managed-property>
+			<property-name>statusCoordinator</property-name>
+			<value>#{applicationScope.statusCoordinator}</value>
+		</managed-property>
+		<managed-property>
+			<property-name>userCoordinator</property-name>
+			<value>#{applicationScope.userCoordinator}</value>
+		</managed-property>
 	</managed-bean>
 
 	<managed-bean>
@@ -54,6 +106,22 @@
 		<managed-bean-name>createProjectBean</managed-bean-name>
 		<managed-bean-class>br.org.vinicius.jsf.ptrack.web.CreateProjectBean</managed-bean-class>
 		<managed-bean-scope>request</managed-bean-scope>
+				<managed-property>
+			<property-name>visit</property-name>
+			<value>#{sessionScope.visit}</value>
+		</managed-property>
+		<managed-property>
+			<property-name>projectCoordinator</property-name>
+			<value>#{applicationScope.projectCoordinator}</value>
+		</managed-property>
+		<managed-property>
+			<property-name>statusCoordinator</property-name>
+			<value>#{applicationScope.statusCoordinator}</value>
+		</managed-property>
+		<managed-property>
+			<property-name>userCoordinator</property-name>
+			<value>#{applicationScope.userCoordinator}</value>
+		</managed-property>
 	</managed-bean>
 
 	<managed-bean>
@@ -63,6 +131,38 @@
 		<managed-bean-class>br.org.vinicius.jsf.ptrack.web.Visit</managed-bean-class>
 		<managed-bean-scope>session</managed-bean-scope>
 	</managed-bean>
+
+	<managed-bean>
+		<description>Used for project history presentation and navigation.
+		</description>
+		<managed-bean-name>showHistoryBean</managed-bean-name>
+		<managed-bean-class>br.org.vinicius.jsf.ptrack.web.ShowHistoryBean</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+
+	<managed-bean>
+		<managed-bean-name>selectItems</managed-bean-name>
+		<managed-bean-class>
+			br.org.vinicius.jsf.ptrack.web.EnumItemAdapter
+		</managed-bean-class>
+		<managed-bean-scope>application</managed-bean-scope>
+	</managed-bean>
+
+
+
+	<!-- converters -->
+
+	<converter>
+		<converter-id>ArtifactType</converter-id>
+		<converter-class>br.org.vinicius.jsf.ptrack.web.ArtifactTypeConverter</converter-class>
+	</converter>
+
+	<converter>
+		<converter-id>ProjectType</converter-id>
+		<converter-class>br.org.vinicius.jsf.ptrack.web.ProjectTypeConverter</converter-class>
+	</converter>
+
+	<!-- navigation -->
 
 	<navigation-rule>
 		<from-view-id>/login.jsp</from-view-id>
@@ -81,7 +181,7 @@
 	</navigation-rule>
 
 	<navigation-rule>
-		<description>Navigation for the toolbar.</description>
+		<description>General navigation rules</description>
 		<from-view-id>/*</from-view-id>
 		<navigation-case>
 			<from-outcome>inbox</from-outcome>
@@ -99,20 +199,27 @@
 			<from-outcome>logout</from-outcome>
 			<to-view-id>/login.jsp</to-view-id>
 		</navigation-case>
+		<navigation-case>
+			<from-outcome>error</from-outcome>
+			<to-view-id>/error.jsp</to-view-id>
+		</navigation-case>
 	</navigation-rule>
 
 	<navigation-rule>
 		<from-view-id>/protected/inbox.jsp</from-view-id>
 		<navigation-case>
-			<from-outcome>details</from-outcome>
+			<from-action>#{inboxBean.details}</from-action>
+			<from-outcome>success</from-outcome>
 			<to-view-id>/general/details.jsp</to-view-id>
 		</navigation-case>
 		<navigation-case>
-			<from-outcome>approve</from-outcome>
+			<from-action>#{inboxBean.approve}</from-action>
+			<from-outcome>success</from-outcome>
 			<to-view-id>/protected/approve.jsp</to-view-id>
 		</navigation-case>
 		<navigation-case>
-			<from-outcome>reject</from-outcome>
+			<from-action>#{inboxBean.reject}</from-action>
+			<from-outcome>success</from-outcome>
 			<to-view-id>/protected/reject.jsp</to-view-id>
 		</navigation-case>
 	</navigation-rule>
@@ -128,11 +235,23 @@
 	<navigation-rule>
 		<from-view-id>/protected/approve.jsp</from-view-id>
 		<navigation-case>
-			<from-outcome>approve</from-outcome>
+			<from-outcome>success_readonly</from-outcome>
+			<to-view-id>/general/show_all.jsp</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>success_readwrite</from-outcome>
 			<to-view-id>/protected/inbox.jsp</to-view-id>
 		</navigation-case>
 		<navigation-case>
-			<from-outcome>cancel</from-outcome>
+			<from-outcome>failure</from-outcome>
+			<to-view-id>/protected/approve.jsp</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>cancel_readonly</from-outcome>
+			<to-view-id>/general/show_all.jsp</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>cancel_readwrite</from-outcome>
 			<to-view-id>/protected/inbox.jsp</to-view-id>
 		</navigation-case>
 	</navigation-rule>
@@ -140,11 +259,23 @@
 	<navigation-rule>
 		<from-view-id>/protected/reject.jsp</from-view-id>
 		<navigation-case>
-			<from-outcome>reject</from-outcome>
+			<from-outcome>success_readonly</from-outcome>
+			<to-view-id>/general/show_all.jsp</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>success_readwrite</from-outcome>
 			<to-view-id>/protected/inbox.jsp</to-view-id>
 		</navigation-case>
 		<navigation-case>
-			<from-outcome>cancel</from-outcome>
+			<from-outcome>failure</from-outcome>
+			<to-view-id>/protected/approve.jsp</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>cancel_readonly</from-outcome>
+			<to-view-id>/general/show_all.jsp</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>cancel_readwrite</from-outcome>
 			<to-view-id>/protected/inbox.jsp</to-view-id>
 		</navigation-case>
 	</navigation-rule>
@@ -157,6 +288,18 @@
 		</navigation-case>
 		<navigation-case>
 			<from-outcome>cancel</from-outcome>
+			<to-view-id>/protected/inbox.jsp</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+		<from-view-id>/general/details.jsp</from-view-id>
+		<navigation-case>
+			<from-outcome>cancel_readonly</from-outcome>
+			<to-view-id>/general/show_all.jsp</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>cancel_readwrite</from-outcome>
 			<to-view-id>/protected/inbox.jsp</to-view-id>
 		</navigation-case>
 	</navigation-rule>
